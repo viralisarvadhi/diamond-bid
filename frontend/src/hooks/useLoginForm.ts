@@ -10,7 +10,7 @@ export const useLoginForm = (onSubmit: (data: LoginFormData) => void) => {
     email: '',
     password: '',
   })
-  const [errors, setErrors] = useState<Partial<LoginFormData>>({})
+  const [errors] = useState<Partial<LoginFormData>>({})
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget

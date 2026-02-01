@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAppDispatch } from '../../app/hooks'
-import { login } from '../../features/auth/authAPI'
-import { loginSuccess } from '../../features/auth/authSlice'
+import { useAppDispatch } from '../../store/hooks'
+import { authService } from '../../services'
+import { loginSuccess } from '../../store/slices/authSlice'
 
 interface LoginFormState {
     email: string
@@ -47,18 +47,21 @@ const Login: React.FC = () => {
 
         try {
             setLoading(true)
-            const data = await login({ email, password })
+            const response = await authService.login(email, password)
+            const data = response.data.data
             const token = data?.token
+            const user = data?.user
 
-            if (!token) {
+            if (!token || !user) {
                 setError('Invalid login response. Please try again.')
                 return
             }
 
-            dispatch(loginSuccess({ token }))
+            // Store token and user in Redux
+            dispatch(loginSuccess({ token, user }))
 
-            const payload = decodeToken(token)
-            const role = payload?.role
+            // Redirect based on user role
+            const role = user?.role
 
             if (role === 'ADMIN') {
                 navigate('/admin/dashboard', { replace: true })

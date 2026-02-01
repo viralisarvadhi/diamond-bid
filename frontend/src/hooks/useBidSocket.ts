@@ -1,6 +1,6 @@
-import { useEffect, useRef, useCallback, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import io, { Socket } from 'socket.io-client'
-import { useAppSelector } from '../app/hooks'
+import { useAppSelector } from '../store/hooks'
 import { API_BASE_URL } from '../utils/constants'
 
 interface UseBidSocketOptions {

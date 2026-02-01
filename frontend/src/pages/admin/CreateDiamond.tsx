@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAppSelector } from '../../app/hooks'
+import { useAppSelector } from '../../store/hooks'
 import { API_BASE_URL } from '../../utils/constants'
 
 const CreateDiamond: React.FC = () => {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useAppSelector } from '../../app/hooks'
+import { useAppSelector } from '../../store/hooks'
 import { API_BASE_URL } from '../../utils/constants'
 
 interface User {
@@ -161,8 +161,8 @@ const AdminUsers: React.FC = () => {
                                     <td className="px-6 py-4 text-center text-sm">
                                         <span
                                             className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${user.is_active
-                                                    ? 'bg-green-100 text-green-800'
-                                                    : 'bg-yellow-100 text-yellow-800'
+                                                ? 'bg-green-100 text-green-800'
+                                                : 'bg-yellow-100 text-yellow-800'
                                                 }`}
                                         >
                                             {user.is_active ? 'Active' : 'Deactivated'}
@@ -221,8 +221,8 @@ const AdminUsers: React.FC = () => {
                                 onClick={confirmAction}
                                 disabled={actionState.loading}
                                 className={`rounded-md px-3 py-2 text-sm font-semibold text-white ${confirmDialog.action === 'deactivate'
-                                        ? 'bg-red-600 hover:bg-red-700'
-                                        : 'bg-green-600 hover:bg-green-700'
+                                    ? 'bg-red-600 hover:bg-red-700'
+                                    : 'bg-green-600 hover:bg-green-700'
                                     } disabled:cursor-not-allowed disabled:opacity-50`}
                             >
                                 {actionState.loading ? 'Processing...' : confirmDialog.action === 'activate' ? 'Activate' : 'Deactivate'}

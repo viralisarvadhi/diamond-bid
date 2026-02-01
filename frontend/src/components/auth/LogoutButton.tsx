@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAppDispatch } from '../../app/hooks'
-import { logout } from '../../features/auth/authSlice'
+import { useAppDispatch } from '../../store/hooks'
+import { logout } from '../../store/slices/authSlice'
 
 const LogoutButton: React.FC = () => {
     const dispatch = useAppDispatch()

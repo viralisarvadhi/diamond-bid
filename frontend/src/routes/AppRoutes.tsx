@@ -15,8 +15,8 @@ import AdminDiamonds from '../pages/admin/AdminDiamonds'
 import CreateDiamond from '../pages/admin/CreateDiamond'
 import AdminBids from '../pages/admin/AdminBids'
 import AdminResult from '../pages/admin/AdminResult'
-import UserLayout from '../components/layouts/UserLayout'
-import AdminLayout from '../components/layouts/AdminLayout'
+import UserLayout from '../pages/UserLayout'
+import AdminLayout from '../pages/AdminLayout'
 
 const AppRoutes: React.FC = () => {
   return (

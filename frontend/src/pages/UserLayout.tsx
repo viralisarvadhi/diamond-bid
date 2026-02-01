@@ -1,6 +1,27 @@
 import React from 'react'
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
-import LogoutButton from '../auth/LogoutButton'
+import { useAppDispatch } from '../store/hooks'
+import { logout } from '../store/slices/authSlice'
+
+const LogoutButton: React.FC = () => {
+    const dispatch = useAppDispatch()
+    const navigate = useNavigate()
+
+    const handleLogout = () => {
+        dispatch(logout())
+        navigate('/login', { replace: true })
+    }
+
+    return (
+        <button
+            type="button"
+            onClick={handleLogout}
+            className="rounded-md border border-gray-300 px-3 py-1 text-sm font-medium text-gray-700 hover:bg-gray-50"
+        >
+            Logout
+        </button>
+    )
+}
 
 const UserLayout: React.FC = () => {
     const navigate = useNavigate()

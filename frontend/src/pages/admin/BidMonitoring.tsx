@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams, useLocation } from 'react-router-dom'
-import { useAppSelector } from '../../app/hooks'
+import { useAppSelector } from '../../store/hooks'
 import { API_BASE_URL } from '../../utils/constants'
 import { useBidSocket } from '../../hooks/useBidSocket'
 
@@ -385,9 +385,6 @@ const BidMonitoring: React.FC = () => {
                                     <th className="px-6 py-3 text-center text-sm font-semibold text-gray-900">
                                         Status
                                     </th>
-                                    <th className="px-6 py-3 text-center text-sm font-semibold text-gray-900">
-                                        Action
-                                    </th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-200">
@@ -415,13 +412,6 @@ const BidMonitoring: React.FC = () => {
                                                     </span>
                                                 )}
                                             </td>
-                                            <td className="px-6 py-4 text-center">
-                                                {isHighestBid && (
-                                                    <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800">
-                                                        ✓ Winner
-                                                    </span>
-                                                )}
-                                            </td>
                                         </tr>
                                     )
                                 })}
@@ -430,23 +420,6 @@ const BidMonitoring: React.FC = () => {
                     </div>
                 )}
             </div>
-
-            {/* Close Bid Section (for ACTIVE diamonds) */}
-            {diamond.status === 'ACTIVE' && (
-                <div className="rounded-lg border border-yellow-200 bg-yellow-50 p-6">
-                    <h3 className="text-lg font-semibold text-yellow-900">Close Bid</h3>
-                    <p className="mt-2 text-sm text-yellow-700">
-                        Close the bidding for this diamond to stop accepting new bids.
-                    </p>
-                    <button
-                        type="button"
-                        onClick={() => setConfirmState({ show: true, loading: false, error: null })}
-                        className="mt-4 rounded-md bg-yellow-600 px-4 py-2 text-sm font-semibold text-white hover:bg-yellow-700"
-                    >
-                        Close Bid Early
-                    </button>
-                </div>
-            )}
 
             {/* Declare Result Section */}
             {canDeclareResult && !hasNoBids && (

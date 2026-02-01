@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useAppSelector } from '../../app/hooks'
+import { useAppSelector } from '../../store/hooks'
 import { API_BASE_URL } from '../../utils/constants'
 import { useBidSocket } from '../../hooks/useBidSocket'
 

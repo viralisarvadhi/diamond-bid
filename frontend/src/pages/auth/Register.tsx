@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAppDispatch } from '../../app/hooks'
-import { loginSuccess } from '../../features/auth/authSlice'
+import { useAppDispatch } from '../../store/hooks'
+import { loginSuccess } from '../../store/slices/authSlice'
 
 interface RegisterFormState {
     name: string
@@ -95,19 +95,18 @@ const Register: React.FC = () => {
 
             const data = await response.json()
             const token = data?.data?.token
+            const user = data?.data?.user
 
-            if (!token) {
+            if (!token || !user) {
                 setError('Invalid registration response. Please try again.')
                 return
             }
 
             setSuccess(true)
-            dispatch(loginSuccess({ token }))
-
-            const payload = decodeToken(token)
-            const role = payload?.role
+            dispatch(loginSuccess({ token, user }))
 
             // Auto-login and redirect
+            const role = user?.role
             setTimeout(() => {
                 if (role === 'ADMIN') {
                     navigate('/admin/dashboard', { replace: true })

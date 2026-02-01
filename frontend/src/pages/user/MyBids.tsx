@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useAppSelector } from '../../app/hooks'
+import { useAppSelector } from '../../store/hooks'
 import { API_BASE_URL } from '../../utils/constants'
 
 interface UserBid {
@@ -183,10 +183,10 @@ const MyBids: React.FC = () => {
                             {resultMessage && (
                                 <div
                                     className={`mt-3 rounded-md px-3 py-2 text-sm font-medium ${diamond.user_bid?.result === 'WON'
-                                            ? 'bg-green-50 text-green-700'
-                                            : diamond.user_bid?.result === 'LOST'
-                                                ? 'bg-red-50 text-red-700'
-                                                : 'bg-gray-50 text-gray-700'
+                                        ? 'bg-green-50 text-green-700'
+                                        : diamond.user_bid?.result === 'LOST'
+                                            ? 'bg-red-50 text-red-700'
+                                            : 'bg-gray-50 text-gray-700'
                                         }`}
                                 >
                                     {resultMessage}
